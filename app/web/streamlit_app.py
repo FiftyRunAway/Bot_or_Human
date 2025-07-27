@@ -8,8 +8,8 @@ from app.models import GetMessageRequestModel
 default_echo_bot_url = "http://localhost:6872"
 st.set_page_config(initial_sidebar_state="collapsed")
 
-st.markdown("# Echo bot 🚀")
-st.sidebar.markdown("# Echo bot 🚀")
+st.markdown("# Bot or Human 🚀")
+st.sidebar.markdown("# Bot or Human 🚀")
 
 if "dialog_id" not in st.session_state:
     st.session_state.dialog_id = str(uuid4())

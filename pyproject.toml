@@ -8,6 +8,10 @@ dependencies = [
     "fastapi[standard] (>=0.115.11,<0.116.0)",
     "pydantic (>=2.10.6,<3.0.0)",
     "streamlit (==1.43.1)",
+    "transformers (>=4.53.3,<5.0.0)",
+    "datasets (>=4.0.0,<5.0.0)",
+    "scikit-learn (>=1.7.1,<2.0.0)",
+    "sentence-transformers (>=5.0.0,<6.0.0)",
 ]
 
 
