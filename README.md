@@ -1,16 +1,21 @@
-# Echo Bot
+# Бот или человек
 
-A simple echo bot for the HumanOrBot project that replies to any received message with the same text.
+2 ключевых задачи:
+1. Имитация живого ответа на сообщение пользователя (тест Тьюринга);
+2. Анализ сообщения с целью выявить его автора: бот или живой человек.
 
-## Overview
+## Обзор решения
 
-This service provides a FastAPI-based API endpoint that receives messages and echoes them back. It is designed to work with the HumanOrBot service, responding to each message with the same text.
+1. Для имитации живого ответа в 70% случаев используется GigaChat API. Имитация достигается путем Prompt Engineering. В 30% случаев используются ранее заготовленные случайные фразы, которые имитируют попытку человека обмануть другого человека, что он робот.
 
-## Running the Service
+2. Для анализа сообщений с целью выявления автора в реальном времени был обучен небольшой датасет с помощью Sentence Transformer, превращающий текст в векторы, но в отличие от Bag-of-Words он позволяет учитывать семантические особенности текста, что повышает точность идентификации.
 
-Go to the project directory:
 
-### On Linux/macOS
+## Запуск сервиса
+
+Из директории проекта:
+
+### На Linux/macOS
 
 ```bash
 chmod +x run_all_linux.sh
@@ -20,14 +25,14 @@ chmod +x run_all_linux.sh
 ./run_all_linux.sh
 ```
 
-### On Windows
+### На Windows
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File .\run_all_windows.ps1
 ```
 
-#### These scripts will:
-1. Install Poetry (if needed)
-2. Install project dependencies
-3. Set up an SSH tunnel to the remote host
-4. Start the FastAPI application on port 6782
+#### Этот скрипт:
+1. Устанавливает Poetry
+2. Устанавливает необходимые зависимости
+3. Настроит SSH-туннель к удаленному узлу
+4. Запустит приложение FastAPI на порту 6782
