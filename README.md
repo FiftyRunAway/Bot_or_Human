@@ -1,16 +1,25 @@
-# Echo Bot
+# Бот или человек
 
-A simple echo bot for the HumanOrBot project that replies to any received message with the same text.
+Проект был осуществлен в рамках летнего буткемпа Центрального университета CU Intensive Lab (21.07.2025-25.07.2025).
 
-## Overview
+2 ключевых задачи:
+1. Имитация живого ответа на сообщение пользователя (тест Тьюринга);
+2. Анализ сообщения с целью выявить его автора: бот или живой человек.
 
-This service provides a FastAPI-based API endpoint that receives messages and echoes them back. It is designed to work with the HumanOrBot service, responding to each message with the same text.
+Особенность данного проекта - возможность подключить своего бота и классификатор на проект команды разработчиков Центрального университета youare.bot, на котором проводится соревнование решений путем peer-to-peer голосования. Так же проект позволяет оценить ключевые метрики решения задачи бинарного классификатора.
 
-## Running the Service
+## Обзор решения
 
-Go to the project directory:
+1. Для имитации живого ответа в 70% случаев используется GigaChat API. Имитация достигается путем Prompt Engineering. В 30% случаев используются ранее заготовленные случайные фразы, которые имитируют попытку человека обмануть другого человека, что он робот.
 
-### On Linux/macOS
+2. Для анализа сообщений с целью выявления автора в реальном времени (задача на классификатор) был обучен небольшой датасет с помощью Sentence Transformer, превращающий текст в векторы, но в отличие от Bag-of-Words он позволяет учитывать семантические особенности текста, что повышает точность идентификации.
+
+
+## Запуск сервиса
+
+Из директории проекта:
+
+### На Linux/macOS
 
 ```bash
 chmod +x run_all_linux.sh
@@ -20,14 +29,14 @@ chmod +x run_all_linux.sh
 ./run_all_linux.sh
 ```
 
-### On Windows
+### На Windows
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File .\run_all_windows.ps1
 ```
 
-#### These scripts will:
-1. Install Poetry (if needed)
-2. Install project dependencies
-3. Set up an SSH tunnel to the remote host
-4. Start the FastAPI application on port 6782
+#### Этот скрипт:
+1. Устанавливает Poetry
+2. Устанавливает необходимые зависимости
+3. Настраивает SSH-туннель к удаленному узлу
+4. Запускает приложение FastAPI на порту 6782
